@@ -34,3 +34,5 @@ And you're done. You'll now get stuff like this as part of stdout (unless you ov
 │ <— finished ALOSInterface.lookup(), return value: 840, runtime: 1ms
 ╰┈┈
 ```
+
+Just remember that it's a call tracer that wraps object instances, so if you need deep tracing, add it to any `new ...` you want further inspected. Also note that because of the call order, you cannot use this to trace the constructor call itself: that already finished by the time you hand the instance to the tracer.
