@@ -9,9 +9,7 @@ import { trace } from "/tracer.js";
 const something = trace(new Something(...));
 ```
 
-And you're done. You'll now get stuff like this as part of stdout (unless you override where to log to by passing `{ logger: ... }` as options object to `trace`, with something that has a `log` function).
-
-For example:
+And you're done. You'll now get stuff like this as part of stdout (unless you override where to log to by passing `{ logger: ... }` as options object to `trace`, with something that has a `log` function):
 
 ```
 │ —> call: ALOSInterface.lookup([48.8,-123.8])
