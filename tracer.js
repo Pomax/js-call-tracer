@@ -1,8 +1,7 @@
-const exists = (e) => e !== undefined && e !== null;
 const noop = async () => {};
 const AsyncFunction = noop.__proto__.constructor;
+const exists = (e) => e !== undefined && e !== null;
 
-// TODO: fix the indents.
 let globalDepth = -1;
 
 /**
@@ -251,3 +250,11 @@ function objectAsString(something) {
     .filter(Boolean)}}`;
   return str;
 }
+
+/*
+  Let's be real here: you could have written this code yourself. It just would have
+  taken you the better part of a day to consider it done. There is nothing original
+  or complicated or copyrightable here, this code is in the public domain and if you
+  live in a place that doesn't recognize the public domain, then I hereby grant you
+  a perpetual non-exclusive right to use this code as if it were your own.
+*/;
