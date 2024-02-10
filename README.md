@@ -37,4 +37,18 @@ And you're done. You'll now get stuff like this as part of stdout (unless you ov
 ╰┈┈
 ```
 
-Just remember that it's a call tracer that wraps object instances, so if you need deep tracing, add it to any `new ...` you want further inspected. Also note that because of the call order, you cannot use this to trace the constructor call itself: that already finished by the time you hand the instance to the tracer.
+Just remember that it's a call tracer that wraps object instances, so if you need deep tracing, add it to any `new ...` object instance you want further inspected (the tracer cannot magically inject itself into function bodies, nor should it. It would end up tracing every single JS built-in, which is the opposite of useful). If you have something like this:
+
+```
+class Something {
+  constructor(...) {
+    this.other = new Other(...);
+  }
+  runWithOther() {
+    return this.other.aFunction();
+  }
+}
+```
+Then a you'll want to have `trace(something)` in your code as well as update your class to have `this.other = trace(new Other(...))`. 
+
+Also note that because you wrap the tracer around object instances, you cannot use this to trace the constructor's call chain. That already finished running by the time you hand your object instance over to the tracer.
