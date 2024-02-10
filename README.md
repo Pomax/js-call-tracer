@@ -39,7 +39,7 @@ And you're done. You'll now get stuff like this as part of stdout (unless you ov
 
 Just remember that it's a call tracer that wraps object instances, so if you need deep tracing, add it to any `new ...` object instance you want further inspected (the tracer cannot magically inject itself into function bodies, nor should it. It would end up tracing every single JS built-in, which is the opposite of useful). If you have something like this:
 
-```
+```javascript
 class Something {
   constructor(...) {
     this.other = new Other(...);
